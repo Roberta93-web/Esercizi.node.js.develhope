@@ -8,7 +8,7 @@ const server = createServer((request, response) => {
   response.setHeader("Content-Type", "text/html");
 
   response.end(
-    "<html><body><h1>Hello baby!</h1><h2>I'm Roberta!</h2></body></html>"
+    "<html><body><h1>Hello world!</h1><h2>I'm Roberta!</h2></body></html>"
   );
 });
 
