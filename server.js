@@ -50,9 +50,10 @@ app.post("/api/planets", (req, res) => {
       .status(400)
       .json({ msg: validateNewPlanet.error.details[0].message });
   } else {
-    planets = [...planets, newPlanet]
+    planets = [...planets, newPlanet];
 
-  res.status(201).json({ msg: "New Planet was created" });
+    res.status(201).json({ msg: "New Planet was created" });
+  }
 });
 
 //PUT
