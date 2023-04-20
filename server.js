@@ -1,7 +1,6 @@
 import express from "express";
 import "express-async-errors";
 import morgan from "morgan";
-import Joi from "joi";
 import {
   getAll,
   getOneById,
@@ -20,12 +19,6 @@ app.get("/api/planets", getAll);
 
 //GETByID
 app.get("/api/planets/:id", getOneById);
-
-//VALIDATION
-const planetSchema = Joi.object({
-  id: Joi.number().integer().required(),
-  name: Joi.string().required(),
-});
 
 //POST
 app.post("/api/planets", create);

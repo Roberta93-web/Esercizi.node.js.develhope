@@ -1,3 +1,5 @@
+import Joi from "joi";
+
 let planets = [
   { id: 1, name: "Earth" },
   { id: 2, name: "Mars" },
@@ -15,11 +17,24 @@ const getOneById = (req, res) => {
   res.status(200).json(planet);
 };
 
+const planetSchema = Joi.object({
+  id: Joi.number().integer().required(),
+  name: Joi.string().required(),
+});
+
 const create = (req, res) => {
   const { id, name } = req.body;
   const newPlanet = { id, name };
 
-  res.status(201).json({ msg: "New Planet was created" });
+  if (validateNewPlanet.error) {
+    return res
+      .status(400)
+      .json({ msg: validateNewPlanet.error.details[0].message });
+  } else {
+    planets = [...planets, newPlanet];
+
+    res.status(201).json({ msg: "The planet was created" });
+  }
 };
 
 const updateById = (req, res) => {
