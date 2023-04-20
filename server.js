@@ -43,6 +43,14 @@ const planetSchema = Joi.object({
 app.post("/api/planets", (req, res) => {
   const { id, name } = req.body;
   const newPlanet = { id, name };
+  const validateNewPlanet = planetSchema.validate(newPlanet);
+
+  if (validateNewPlanet.error) {
+    return res
+      .status(400)
+      .json({ msg: validateNewPlanet.error.details[0].message });
+  } else {
+    planets = [...planets, newPlanet]
 
   res.status(201).json({ msg: "New Planet was created" });
 });
