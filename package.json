@@ -17,6 +17,7 @@
     "express-async-errors": "^3.1.1",
     "joi": "^17.9.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
   }
 }
