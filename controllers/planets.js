@@ -25,6 +25,7 @@ const planetSchema = Joi.object({
 const create = (req, res) => {
   const { id, name } = req.body;
   const newPlanet = { id, name };
+  const validateNewPlanet = planetSchema.validate(newPlanet);
 
   if (validateNewPlanet.error) {
     return res
