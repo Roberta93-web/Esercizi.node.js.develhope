@@ -1,10 +1,11 @@
-import * as dotenv from "dotenv"; //carica variabili d'ambiente (.env)
+import * as dotenv from "dotenv";
 dotenv.config();
 import passport from "passport";
 import passportJWT from "passport-jwt";
 import { db } from "./db.js";
 
 const { SECRET } = process.env;
+
 passport.use(
   new passportJWT.Strategy(
     {
@@ -12,7 +13,6 @@ passport.use(
       jwtFromRequest: passportJWT.ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     async (payload, done) => {
-
       const user = db.one(`SELECT * FROM users WHERE id=$1`, payload.id);
       console.log(user);
 

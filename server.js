@@ -8,6 +8,7 @@ import {
   updateById,
   deleteById,
 } from "./controllers/planets.js";
+import { signUp, logIn } from "./controllers/users.js";
 
 const app = express();
 const port = 4000;
@@ -29,7 +30,8 @@ app.put("/api/planets/:id", updateById);
 //DELETE
 app.delete("/api/planets/:id", deleteById);
 
-app.post("api/users");
+app.post("/api/users/signup", signUp);
+app.post("/api/users/login", logIn);
 
 app.listen(port, () =>
   console.log(`Server listening on port: http://localhost:${port}`)
