@@ -8,7 +8,9 @@ import {
   updateById,
   deleteById,
 } from "./controllers/planets.js";
-import { signUp, logIn } from "./controllers/users.js";
+import authorize from "./authorize.js";
+import { signUp, logIn, logOut } from "./controllers/users.js";
+import "./passport.js";
 
 const app = express();
 const port = 4000;
@@ -32,6 +34,7 @@ app.delete("/api/planets/:id", deleteById);
 
 app.post("/api/users/signup", signUp);
 app.post("/api/users/login", logIn);
+app.get("/api/users/logout", authorize, logOut);
 
 app.listen(port, () =>
   console.log(`Server listening on port: http://localhost:${port}`)
